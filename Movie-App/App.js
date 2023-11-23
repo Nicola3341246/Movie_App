@@ -1,12 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import InputButoon from './components/Button.js'
 
 export default function App() {
+  const [showInput, setShowInput] = useState(false);
+
+  const handleButtonPress = () => {
+    setShowInput(!showInput);
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <InputButoon>
+    
+    </InputButoon>
+    // <View style={styles.container}>
+    //   {showInput ? (
+    //     <Text>Input is shown</Text>
+    //   ) : (
+    //     <Text>No input field shown</Text>
+    //   )}
+    //   <Button
+    //     title={showInput ? 'Hide Input' : 'Show Input'}
+    //     onPress={handleButtonPress}
+    //   />
+    // </View>
   );
 }
 
@@ -18,3 +35,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
