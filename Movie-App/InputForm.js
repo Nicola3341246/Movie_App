@@ -13,9 +13,9 @@ export default function InputForm() {
     setDescription(text);
   };
 
-  const handleSubmit = () => {
-    console.log('Film Name:', filmName);
-    console.log('Description:', description);
+  const handleSubmit = (event) => {
+    console.log(filmName)
+    console.log(description)
   };
 
   return (
