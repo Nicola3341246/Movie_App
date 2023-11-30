@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { View, TextInput, Text, Button, StyleSheet } from 'react-native';
+import { View, TextInput, Button, StyleSheet } from 'react-native';
 
-export default function InputForm() {
-  const [filmName, setFilmName] = useState();
-  const [description, setDescription] = useState();
+export default function InputForm({ handleSubmit }) {
+  const [filmName, setFilmName] = useState('');
+  const [description, setDescription] = useState('');
 
   const handleFilmNameChange = (text) => {
     setFilmName(text);
@@ -13,9 +13,10 @@ export default function InputForm() {
     setDescription(text);
   };
 
-  const handleSubmit = (event) => {
-    console.log(filmName)
-    console.log(description)
+  const handleFormSubmit = () => {
+    handleSubmit({ name: filmName, description: description });
+    setFilmName('');
+    setDescription('');
   };
 
   return (
@@ -32,7 +33,7 @@ export default function InputForm() {
         value={description}
         onChangeText={handleDescriptionChange}
       />
-      <Button title="Submit" onPress={handleSubmit} />
+      <Button title="Submit" onPress={handleFormSubmit} />
     </View>
   );
 }

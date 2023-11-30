@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import InputForm from './InputForm';
+import FilmList from './FilmList';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <InputForm/>
+      <FilmList/>
     </View>
   );
 }
