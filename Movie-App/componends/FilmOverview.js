@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, Pressable, Image } from "react-native";
+import { Text, View, ScrollView, StyleSheet, Pressable, Image } from "react-native";
 
 export default function FilmOverview({ film, back, deleteFilm, editFilm }) {
     if (film == undefined || film.title === undefined) {
@@ -7,25 +7,27 @@ export default function FilmOverview({ film, back, deleteFilm, editFilm }) {
                 <Text style={styles.title}>
                     This is what happens when you find a stranger in the Alps!
                 </Text>
-                <Text>In other Words: There is no data to This Film</Text>
+                <Text>In other Words: There is no data for This Film</Text>
             </View>
         );
     }
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>{film.title}</Text>
-            <Image source={film.poster} style={styles.filmPoster} />
-            <Text style={styles.description}>{film.description}</Text>
+            <ScrollView style={styles.scrollView}>
+                <Text style={styles.title}>{film.title}</Text>
+                <Image source={film.poster} style={styles.filmPoster} />
+                <Text style={styles.description}>{film.description}</Text>
+            </ScrollView>
             <View style={styles.bottomBar}>
                 <Pressable style={styles.button} onPress={deleteFilm}>
-                    Delete
+                    <Text>Delete</Text>
                 </Pressable>
                 <Pressable style={styles.button} onPress={editFilm}>
-                    Edit
+                    <Text>Edit</Text>
                 </Pressable>
                 <Pressable style={styles.button} onPress={back}>
-                    Back
+                    <Text>Back</Text>
                 </Pressable>
             </View>
         </View>
@@ -34,24 +36,25 @@ export default function FilmOverview({ film, back, deleteFilm, editFilm }) {
 
 const styles = StyleSheet.create({
     container: {
-        display: "flex",
+        margin: "0",
+        flex: 1,
         flexDirection: "column",
-
-        width: "100%",
-        height: "100%",
-
-        fontFamily: "arial",
         backgroundColor: "#6b6b6b",
     },
 
+    scrollView: {
+        height: "1%",
+    },
+
     title: {
-        fontSize: "2rem",
+        fontSize: 24,
         textAlign: "center",
     },
 
     filmPoster: {
         width: "100%",
-        minHeight: "50%",
+        maxHeight: "100%",
+        minHeight: 200,
     },
 
     description: {
@@ -59,10 +62,8 @@ const styles = StyleSheet.create({
     },
 
     bottomBar: {
-        display: "flex",
         flexDirection: "row",
-        justifyContent: "Space-Between",
-
+        justifyContent: "space-between",
         position: "absolute",
         bottom: 0,
         width: "100%",
@@ -70,9 +71,9 @@ const styles = StyleSheet.create({
 
     button: {
         width: "33%",
-        margin: "0",
-        padding: "0.5rem",
-        borderRadius: "0.5rem 0 0.5rem 0",
+        margin: 0,
+        padding: 8,
+        borderRadius: 8,
 
         textAlign: "center",
         backgroundColor: "#e01616",
