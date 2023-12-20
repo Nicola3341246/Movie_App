@@ -9,13 +9,14 @@ export default function App() {
       <FilmList/>
     </View>
   );
+
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        flex: 1,
+        height: "100%",
+        width: "100%",
+        backgroundColor: "#fff",
+    },
 });
