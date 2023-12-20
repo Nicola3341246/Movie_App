@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
-import FilmOverview from "./componends/FilmOverview";
+import FilmOverview from "./components/FilmOverview.js";
 import InputButoon from "./components/Button.js";
 import TestPoster from "./assets/img/TestPoster.jpg";
 
@@ -53,8 +53,8 @@ export default function App() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        height: "100%",
+        width: "100%",
         backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
     },
 });

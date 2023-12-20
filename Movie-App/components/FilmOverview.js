@@ -14,7 +14,7 @@ export default function FilmOverview({ film, back, deleteFilm, editFilm }) {
 
     return (
         <View style={styles.container}>
-            <ScrollView style={styles.scrollView}>
+            <ScrollView style={styles.scrollConatainer}>
                 <Text style={styles.title}>{film.title}</Text>
                 <Image source={film.poster} style={styles.filmPoster} />
                 <Text style={styles.description}>{film.description}</Text>
@@ -36,14 +36,15 @@ export default function FilmOverview({ film, back, deleteFilm, editFilm }) {
 
 const styles = StyleSheet.create({
     container: {
-        margin: "0",
         flex: 1,
         flexDirection: "column",
         backgroundColor: "#6b6b6b",
     },
 
-    scrollView: {
-        height: "1%",
+    scrollConatainer: {
+        flex: 1,
+        flexDirection: "column",
+        padding: 8,
     },
 
     title: {
@@ -52,9 +53,8 @@ const styles = StyleSheet.create({
     },
 
     filmPoster: {
-        width: "100%",
-        maxHeight: "100%",
-        minHeight: 200,
+        maxWidth: "100%",
+        maxHeight: "80%",
     },
 
     description: {
