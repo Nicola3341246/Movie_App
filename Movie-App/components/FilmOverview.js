@@ -1,19 +1,25 @@
-import { Text, View, ScrollView, StyleSheet, Pressable, Image } from "react-native";
+import { Text, View, ScrollView, StyleSheet, Pressable, Image, Dimensions } from "react-native";
 
 export default function FilmOverview({ film, back, deleteFilm, editFilm }) {
     if (film == undefined || film.title === undefined) {
         return (
-            <View>
+            <View style={styles.errorContainer}>
                 <Text style={styles.title}>
                     This is what happens when you find a stranger in the Alps!
                 </Text>
                 <Text>In other Words: There is no data for This Film</Text>
+                <Pressable style={styles.button} onPress={back}>
+                    <Text>Back</Text>
+                </Pressable>
             </View>
         );
     }
 
+    const screenWidth = Dimensions.get("window").width;
+    const screenHeight = Dimensions.get("window").height;
+
     return (
-        <View style={styles.container}>
+        <View style={{ width: screenWidth, height: screenHeight }}>
             <ScrollView style={styles.scrollConatainer}>
                 <Text style={styles.title}>{film.title}</Text>
                 <Image source={film.poster} style={styles.filmPoster} />
@@ -22,9 +28,6 @@ export default function FilmOverview({ film, back, deleteFilm, editFilm }) {
             <View style={styles.bottomBar}>
                 <Pressable style={styles.button} onPress={deleteFilm}>
                     <Text>Delete</Text>
-                </Pressable>
-                <Pressable style={styles.button} onPress={editFilm}>
-                    <Text>Edit</Text>
                 </Pressable>
                 <Pressable style={styles.button} onPress={back}>
                     <Text>Back</Text>
@@ -35,10 +38,11 @@ export default function FilmOverview({ film, back, deleteFilm, editFilm }) {
 }
 
 const styles = StyleSheet.create({
-    container: {
+    errorContainer: {
         flex: 1,
         flexDirection: "column",
-        backgroundColor: "#6b6b6b",
+        justifyContent: "center",
+        alignItems: "center",
     },
 
     scrollConatainer: {
@@ -63,19 +67,21 @@ const styles = StyleSheet.create({
 
     bottomBar: {
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "space-around",
         position: "absolute",
         bottom: 0,
         width: "100%",
     },
 
     button: {
-        width: "33%",
+        width: "49%",
         margin: 0,
         padding: 8,
         borderRadius: 8,
 
+        display: "flex",
         textAlign: "center",
         backgroundColor: "#e01616",
+        elevation: 3,
     },
 });
