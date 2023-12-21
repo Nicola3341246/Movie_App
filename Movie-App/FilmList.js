@@ -51,26 +51,22 @@ export default function FilmList() {
     };
 
     const handleDeleteFilm = () => {
-        Alert.alert(
-            "Film Löschen",
-            "Alle diese Momente werden verloren sein in der Zeit, so wie Tränen im Regen.",
-            [
-                {
-                    text: "Abrechen",
-                    onPress: () => {},
-                    style: "cancel",
+        Alert.alert("Film Löschen", "All those moments will be lost in time, like tears in rain.", [
+            {
+                text: "Abrechen",
+                onPress: () => {},
+                style: "cancel",
+            },
+            {
+                text: "Löschen",
+                onPress: () => {
+                    const newList = filmList.filter((film, index) => index !== selectedFilm);
+                    setFilmList(newList);
+                    setShowOverview(false);
+                    setShowList(true);
                 },
-                {
-                    text: "Löschen",
-                    onPress: () => {
-                        const newList = filmList.filter((film, index) => index !== selectedFilm);
-                        setFilmList(newList);
-                        setShowOverview(false);
-                        setShowList(true);
-                    },
-                },
-            ]
-        );
+            },
+        ]);
     };
 
     return (
